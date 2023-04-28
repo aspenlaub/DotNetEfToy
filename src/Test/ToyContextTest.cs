@@ -5,8 +5,8 @@ namespace Aspenlaub.Net.GitHub.CSharp.DotNetEfToy.Test;
 [TestClass]
 public class ToyContextTest {
     [TestMethod]
-    public void CanWorkWithToyContext() {
-        using var toyContext = new ToyContext(SynchronizationContext.Current);
+    public async Task CanWorkWithToyContext() {
+        var toyContext = await ToyContextFactory.CreateAsync();
         toyContext.Migrate();
         var dataCount = toyContext.Toys.Count();
         if (dataCount >= 10) {
