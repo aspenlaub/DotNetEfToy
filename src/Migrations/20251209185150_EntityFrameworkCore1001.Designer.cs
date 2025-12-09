@@ -3,14 +3,17 @@ using Aspenlaub.Net.GitHub.CSharp.DotNetEfToy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace Aspenlaub.Net.GitHub.CSharp.DotNetEfToy.Migrations {
     [DbContext(typeof(ToyContext))]
-    partial class ToyContextModelSnapshot : ModelSnapshot {
-        protected override void BuildModel(ModelBuilder modelBuilder) {
+    [Migration("20251209185150_EntityFrameworkCore1001")]
+    partial class EntityFrameworkCore1001 {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder) {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "10.0.1")
