@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DotNetEfToy.csproj" />
+  <Project Path="Test/DotNetEfToy.Test.csproj" />
+</Solution>
