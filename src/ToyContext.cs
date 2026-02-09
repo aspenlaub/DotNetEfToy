@@ -30,7 +30,7 @@ public class ToyContext : ContextBase {
     }
 
     public static async Task<DataSources> GetDataSourcesAsync() {
-        var container = new ContainerBuilder().UsePegh("Vishizhukel", new DummyCsArgumentPrompter()).Build();
+        var container = new ContainerBuilder().UsePegh("Vishizhukel").Build();
         var secretRepository = container.Resolve<ISecretRepository>();
         var secretDataSources = new SecretDataSources();
         var errorsAndInfos = new ErrorsAndInfos();
