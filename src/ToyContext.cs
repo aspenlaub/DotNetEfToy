@@ -1,6 +1,7 @@
 ﻿using Aspenlaub.Net.GitHub.CSharp.Pegh.Components;
 using Aspenlaub.Net.GitHub.CSharp.Pegh.Entities;
 using Aspenlaub.Net.GitHub.CSharp.Pegh.Interfaces;
+using Aspenlaub.Net.GitHub.CSharp.Skladasu.Entities;
 using Aspenlaub.Net.GitHub.CSharp.Vishizhukel.Data;
 using Aspenlaub.Net.GitHub.CSharp.Vishizhukel.Entities.Data;
 using Autofac;
@@ -30,11 +31,11 @@ public class ToyContext : ContextBase {
     }
 
     public static async Task<DataSources> GetDataSourcesAsync() {
-        var container = new ContainerBuilder().UsePegh("Vishizhukel").Build();
-        var secretRepository = container.Resolve<ISecretRepository>();
+        IContainer container = new ContainerBuilder().UsePegh("Vishizhukel").Build();
+        ISecretRepository secretRepository = container.Resolve<ISecretRepository>();
         var secretDataSources = new SecretDataSources();
         var errorsAndInfos = new ErrorsAndInfos();
-        var dataSources = await secretRepository.GetAsync(secretDataSources, errorsAndInfos);
+        DataSources? dataSources = await secretRepository.GetAsync(secretDataSources, errorsAndInfos);
         if (errorsAndInfos.AnyErrors()) {
             throw new Exception(string.Join("\r\n", errorsAndInfos.Errors));
         }
